@@ -6,6 +6,7 @@ namespace Mastermind
 {
     public class InitialConditions
     {
+        static Random RandomGenerator;
         /// <summary>
         /// the length of the pattern (ie, 4 would be a 4 integer length number 2341)
         /// </summary>
@@ -31,18 +32,6 @@ namespace Mastermind
         /// </summary>
         public string Difficulty;
         /// <summary>
-        /// The initial difficulty of the game is Medium (pattern of 4 length, numbers 1 - 6, 10 guesses)
-        /// </summary>
-        public InitialConditions()
-        {
-            PatternLength = 4;
-            PatternMax = 6;
-            PatternMinimum = 1;
-            MaxGuesses = 10;
-            Difficulty = "Medium";
-            this.shuffleAnswer();
-        }
-        /// <summary>
         /// Allows the construction of a custom game
         /// </summary>
         /// <param name="patternLength">The length of the pattern (IE 4 => 1234)</param>
@@ -57,21 +46,29 @@ namespace Mastermind
             PatternMinimum = patternMinimum;
             MaxGuesses = maxGuesses;
             Difficulty = difficulty;
+            RandomGenerator = new Random();
             this.shuffleAnswer();
+            
+        }
+        /// <summary>
+        /// The initial difficulty of the game is Medium (pattern of 4 length, numbers 1 - 6, 10 guesses)
+        /// </summary>
+        public InitialConditions() : this(4, 1, 6, 10, "Medium")
+        {
+
         }
         /// <summary>
         /// changes the answer of the rules
         /// </summary>
         public void shuffleAnswer()
         {
-            Random randomGenerator = new Random();
             List<int> answer = new List<int>();
             while (answer.Count != PatternLength)
             {
                 int number = int.MinValue;
                 while (!((number >= PatternMinimum) && (number <= PatternMax)))
                 {
-                    number = (int)(randomGenerator.NextDouble() * 10);
+                    number = (int)(RandomGenerator.NextDouble() * 10);
                 }
                 answer.Add(number);
             }

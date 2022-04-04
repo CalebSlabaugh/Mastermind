@@ -14,43 +14,16 @@ namespace Mastermind
             Rules = new InitialConditions();
             CurrentConsole = new ConsoleHelper();
         }
-        public InitialConditions Rules;
         /// <summary>
-        /// Runs the mastermind game
+        /// The defenition of the rules of the game
         /// </summary>
-        public void Run()
-        {
-            
-            while (true)
-            {
-                Console.Clear();
-                int selector = CurrentConsole.MenuSelect();
-                Console.Clear();
-                if(selector == 1)
-                {
-                    bool isWon = PlayGame();
-                    CurrentConsole.WinLoss(isWon, Rules.Pattern);
-                    Rules.shuffleAnswer();
-                }
-                if (selector == 2)
-                {
-                    CurrentConsole.DisplayRules(Rules);
-                }
-                if (selector == 3)
-                {
-                    ChangeDifficulty();
-                }
-                if (selector == 4)
-                {
-                    break;
-                }
-            }
-        }
+        public InitialConditions Rules;
+        
         /// <summary>
         /// the game of mastermind. The user plays the game.
         /// </summary>
         /// <returns>a bool indicating if the player won or not</returns>
-        private bool PlayGame()
+        public void PlayGame()
         {
             bool isWon = false;
             List<Guess> guesses = new List<Guess>();
@@ -71,7 +44,10 @@ namespace Mastermind
                 }
             }
             Console.Clear();
-            return isWon;
+            CurrentConsole.WinLoss(isWon, Rules.Pattern);
+            Console.WriteLine("Thank you for playing!");
+            Console.WriteLine("(press enter to close the program)");
+            Console.ReadLine();
         }
         /// <summary>
         /// Method checks the users guess and the answer pattern and returns the amount of correct answers that were in the correct spot
@@ -108,33 +84,6 @@ namespace Mastermind
                 }
             }
             return numberInRightSpot;
-        }
-        /// <summary>
-        /// Changes the difficulty of the game by creating a new set of initial conditions
-        /// </summary>
-        private void ChangeDifficulty()
-        {
-            int selector = CurrentConsole.DifficultySelector();
-            if(selector == 1)
-            {
-                //Easy
-                Rules = new InitialConditions(2, 1, 4, 10, "Easy");
-            }
-            if (selector == 2)
-            {
-                //Medium
-                Rules = new InitialConditions();
-            }
-            if (selector == 3)
-            {
-                //Hard
-                Rules = new InitialConditions(6, 1, 6, 10, "Hard");
-            }
-            if (selector == 4)
-            {
-                //Very Hard
-                Rules = new InitialConditions(10, 1, 9, 20, "Very Hard");
-            }
         }
     }
 }
