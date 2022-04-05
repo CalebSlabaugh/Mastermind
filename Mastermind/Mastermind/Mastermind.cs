@@ -5,36 +5,35 @@ namespace Mastermind
 {
     public class Mastermind
     {
-        static ConsoleHelper CurrentConsole;
         /// <summary>
         /// The mastermind class runs the game mastermind, where the player tries to guess a hidden number with hints revealed by the computer.
         /// </summary>
         public Mastermind()
         {
             Rules = new InitialConditions();
-            CurrentConsole = new ConsoleHelper();
+            CurrentConsole = new ConsoleHelper(Rules);
         }
+        static ConsoleHelper CurrentConsole;
         /// <summary>
         /// The defenition of the rules of the game
         /// </summary>
         public InitialConditions Rules;
-        
         /// <summary>
-        /// the game of mastermind. The user plays the game.
+        /// Plays the game of mastermind. The console exits when the user is done
         /// </summary>
-        /// <returns>a bool indicating if the player won or not</returns>
         public void PlayGame()
         {
             bool isWon = false;
             List<Guess> guesses = new List<Guess>();
             for(int i = 0; (i < Rules.MaxGuesses) && !isWon; i++)
             {
-                CurrentConsole.PrintGuessHeader(Rules);
+                CurrentConsole.PrintGuessHeader();
                 Console.WriteLine($"You have {Rules.MaxGuesses - i} left.");
                 CurrentConsole.PrintPreviousGuesses(guesses);
-                List<int> guess = CurrentConsole.GetPlayerGuess(Rules);
-                int marginalCorrect = CheckMarginalCorrect(guess, Rules.Pattern);
-                int absoluteCorrect = CheckAbsoluteCorrect(guess, Rules.Pattern);
+                Console.WriteLine();
+                List<int> guess = CurrentConsole.GetPlayerGuess();
+                int marginalCorrect = CheckMarginalCorrect(guess);
+                int absoluteCorrect = CheckAbsoluteCorrect(guess);
                 if (absoluteCorrect == Rules.PatternLength) {
                     isWon = true;
                 }
@@ -44,7 +43,7 @@ namespace Mastermind
                 }
             }
             Console.Clear();
-            CurrentConsole.WinLoss(isWon, Rules.Pattern);
+            CurrentConsole.WinLoss(isWon);
             Console.WriteLine("Thank you for playing!");
             Console.WriteLine("(press enter to close the program)");
             Console.ReadLine();
@@ -53,14 +52,14 @@ namespace Mastermind
         /// Method checks the users guess and the answer pattern and returns the amount of correct answers that were in the correct spot
         /// </summary>
         /// <param name="guess">the users guess</param>
-        /// <param name="correct">the correct pattern</param>
         /// <returns>the amount of correct answers in the correct spot</returns>
-        private int CheckAbsoluteCorrect(List<int> guess, List<int> correct)
+        private int CheckAbsoluteCorrect(List<int> guess)
         {
+            List<int> correct = Rules.Pattern;
             int numberInRightSpot = 0;
             for (int i = 0; i < correct.Count; i++)
             {
-                if(guess[i] == correct[i])
+                if((guess[i] == correct[i]))
                 {
                     numberInRightSpot++;
                 }
@@ -71,19 +70,28 @@ namespace Mastermind
         /// Method checks the users guess and the answer pattern and returns the amount of correct answers that were the incorrect spot
         /// </summary>
         /// <param name="guess">the users guess</param>
-        /// <param name="correct">the correct pattern</param>
         /// <returns>the amount of correct answers in the incorrect spot</returns>
-        private int CheckMarginalCorrect(List<int> guess, List<int> correct)
+        private int CheckMarginalCorrect(List<int> guess)
         {
-            int numberInRightSpot = 0;
+            List<int> correct = Rules.Pattern;
+            List<int> checkedNumbers = new List<int>();
+            int numberInIncorrectSpot = 0;
             for (int i = 0; i < correct.Count; i++)
             {
-                if (correct.Contains(guess[i]) && (correct[i] != guess[i]))
+                if ((guess[i] == correct[i]))
                 {
-                    numberInRightSpot++;
+                    checkedNumbers.Add(guess[i]);
                 }
             }
-            return numberInRightSpot;
+            for (int i = 0; i < correct.Count; i++)
+            {
+                if (correct.Contains(guess[i]) && !(checkedNumbers.Contains(guess[i])))
+                {
+                    numberInIncorrectSpot++;
+                    checkedNumbers.Add(guess[i]);
+                }
+            }
+            return numberInIncorrectSpot;
         }
     }
 }

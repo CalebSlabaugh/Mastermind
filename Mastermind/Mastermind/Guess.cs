@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Mastermind
 {
@@ -12,22 +11,22 @@ namespace Mastermind
         /// <param name="guess">the sequence the user submitted</param>
         /// <param name="marginalCorrect">How many times the user used the correct integer, but in the incorrect spot</param>
         /// <param name="absoluteCorrect">How many times the user used the correct integer, and in the correct spot</param>
-        public Guess(List<int> guess, int marginalCorrect, int absoluteCorrect)
+        public Guess(List<int> guess, int marginalCorrect = 0, int absoluteCorrect = 0)
         {
             Sequence = guess;
             MarginalCorrect = marginalCorrect;
             AbsoluteCorrect = absoluteCorrect;
         }
         /// <summary>
-        /// a list of all the guesses the user has made so far
+        /// The pattern the user inputed
         /// </summary>
         public List<int> Sequence;
         /// <summary>
-        /// the amount of correct numbers in the incorrect position
+        /// the amount of correct numbers in the incorrect position for the given guess
         /// </summary>
         public int MarginalCorrect;
         /// <summary>
-        /// the amount of correct answers in the correct position
+        /// the amount of correct answers in the correct position for the given guess
         /// </summary>
         public int AbsoluteCorrect;
         /// <summary>

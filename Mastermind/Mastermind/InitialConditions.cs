@@ -28,37 +28,31 @@ namespace Mastermind
         /// </summary>
         public List<int> Pattern;
         /// <summary>
-        /// A string that describes the difficulty of the game
-        /// </summary>
-        public string Difficulty;
-        /// <summary>
         /// Allows the construction of a custom game
         /// </summary>
         /// <param name="patternLength">The length of the pattern (IE 4 => 1234)</param>
         /// <param name="patternMinimum">The lower bound of each number</param>
         /// <param name="patternMax">The upper bound of each number</param>
         /// <param name="maxGuesses">The amount of guesses allowed in each game</param>
-        /// <param name="difficulty">A string to define the difficulty of the game</param>
-        public InitialConditions(int patternLength, int patternMinimum, int patternMax, int maxGuesses, string difficulty)
+        public InitialConditions(int patternLength, int patternMinimum, int patternMax, int maxGuesses)
         {
             PatternLength = patternLength;
             PatternMax = patternMax;
             PatternMinimum = patternMinimum;
             MaxGuesses = maxGuesses;
-            Difficulty = difficulty;
             RandomGenerator = new Random();
             this.shuffleAnswer();
             
         }
         /// <summary>
-        /// The initial difficulty of the game is Medium (pattern of 4 length, numbers 1 - 6, 10 guesses)
+        /// The initial difficulty of the game is: pattern of 4 length, numbers 1 - 6, 10 guesses
         /// </summary>
-        public InitialConditions() : this(4, 1, 6, 10, "Medium")
+        public InitialConditions() : this(4, 1, 6, 10)
         {
 
         }
         /// <summary>
-        /// changes the answer of the rules
+        /// changes the answer of the rules. Answer does not allow repeat characters.
         /// </summary>
         public void shuffleAnswer()
         {
@@ -66,7 +60,7 @@ namespace Mastermind
             while (answer.Count != PatternLength)
             {
                 int number = int.MinValue;
-                while (!((number >= PatternMinimum) && (number <= PatternMax)))
+                while (!((number >= PatternMinimum) && (number <= PatternMax) && !(answer.Contains(number))))
                 {
                     number = (int)(RandomGenerator.NextDouble() * 10);
                 }

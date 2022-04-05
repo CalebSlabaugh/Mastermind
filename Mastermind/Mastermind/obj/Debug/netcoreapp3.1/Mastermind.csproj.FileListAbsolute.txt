@@ -12,3 +12,17 @@ C:\Users\Student\Desktop\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermin
 C:\Users\Student\Desktop\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.dll
 C:\Users\Student\Desktop\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.pdb
 C:\Users\Student\Desktop\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.genruntimeconfig.cache
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\bin\Debug\netcoreapp3.1\Mastermind.exe
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\bin\Debug\netcoreapp3.1\Mastermind.deps.json
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\bin\Debug\netcoreapp3.1\Mastermind.runtimeconfig.json
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\bin\Debug\netcoreapp3.1\Mastermind.runtimeconfig.dev.json
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\bin\Debug\netcoreapp3.1\Mastermind.dll
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\bin\Debug\netcoreapp3.1\Mastermind.pdb
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.csproj.AssemblyReference.cache
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.AssemblyInfoInputs.cache
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.AssemblyInfo.cs
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.csproj.CoreCompileInputs.cache
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.dll
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.pdb
+C:\Users\Student\git\C-Sharp mastermind\Mastermind\Mastermind\Mastermind\obj\Debug\netcoreapp3.1\Mastermind.genruntimeconfig.cache
